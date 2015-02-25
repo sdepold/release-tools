@@ -12,7 +12,7 @@ if [ -f CHANGELOG.md ]; then
 
   if [ "$?" == 0 ]; then
     printf "Modifying change log ... "
-    sed -i '' 's/Upcoming/1.2.3/' CHANGELOG.md
+    sed -i "" "s/## Upcoming/## $VERSION - `date +%Y-%m-%d`/" CHANGELOG.md
     git add CHANGELOG.md
     git commit -m "Add changes for version: v$VERSION"
     echo "done."
