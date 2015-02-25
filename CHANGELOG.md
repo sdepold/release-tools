@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## Upcoming
+## 1.0.2 - 2015-02-25
 ### Added
 - Date generation
 
