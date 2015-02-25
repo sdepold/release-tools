@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+version = ARGV[0] || raise('pass version as first argument')
+
+def execute(cmd)
+  raise unless system cmd
+end
+
+execute "npm version #{version} -m 'Bump to version: v#{version}'"
+execute "git push"
+execute "git push --tags"

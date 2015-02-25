@@ -1,0 +1,28 @@
+{
+  "name": "node-release-tools",
+  "version": "1.0.0",
+  "description": "A tiny collection of release helpers.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sdepold/node-release-tools.git"
+  },
+  "keywords": [
+    "node",
+    "release",
+    "helper"
+  ],
+  "author": "Sascha Depold",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sdepold/node-release-tools/issues"
+  },
+  "homepage": "https://github.com/sdepold/node-release-tools",
+  "bin": {
+    "npm_bump": "./bin/npm_bump",
+    "npm_release": "./bin/npm_release"
+  }
+}
