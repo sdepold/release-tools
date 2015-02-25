@@ -23,4 +23,5 @@ printf "Bumping package version ... "
 npm version $VERSION -m "Bump to version: v$VERSION"
 echo "done."
 
+git push
 git push --tags
