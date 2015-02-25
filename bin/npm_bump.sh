@@ -13,15 +13,15 @@ if [ -f CHANGELOG.md ]; then
   if [ "$?" == 0 ]; then
     printf "Modifying change log ... "
     sed -i "" "s/## Upcoming/## $VERSION - `date +%Y-%m-%d`/" CHANGELOG.md
-    git add CHANGELOG.md
-    git commit -m "Add changes for version: v$VERSION"
+    git add CHANGELOG.md > /dev/null
+    git commit -m "Add changes for version: v$VERSION" > /dev/null
     echo "done."
   fi
 fi
 
 printf "Bumping package version ... "
-npm version $VERSION -m "Bump to version: v$VERSION"
+npm version $VERSION -m "Bump to version: v$VERSION" > /dev/null
 echo "done."
 
-git push
-git push --tags
+git push > /dev/null
+git push --tags > /dev/null

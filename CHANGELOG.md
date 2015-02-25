@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 ## Upcoming
 ### Changed
 - Add git push to actually add changes to the remote branch
+- Omit output of commands
 
 ## 1.0.2 - 2015-02-25
 ### Added
