@@ -4,7 +4,7 @@
   "description": "A tiny collection of release helpers.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,18 @@
   },
   "homepage": "https://github.com/sdepold/node-release-tools",
   "bin": {
-    "npm_bump": "./bin/npm_bump",
-    "npm_release": "./bin/npm_release"
+    "npm_bump": "./bin/npm_bump.js",
+    "npm_release": "./bin/npm_release.js"
+  },
+  "dependencies": {
+    "bluebird": "^2.9.12",
+    "dateformat": "^1.0.11",
+    "require-all": "^1.0.0",
+    "yargs": "^3.3.1"
+  },
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^2.1.0",
+    "sinon": "^1.12.2"
   }
 }
