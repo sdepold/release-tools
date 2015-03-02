@@ -87,6 +87,7 @@ describe('Support', function () {
       it('inserts the version number if the needle is in the changelog', function () {
         fs.writeFileSync('/tmp/CHANGELOG.md', '## Upcoming');
         this.mock.expects('setVersion').once().withArgs('1.2.3');
+        this.mock.expects('commitVersion').once().withArgs('1.2.3');
         return this.helper.update({ version: '1.2.3' });
       });
     });
