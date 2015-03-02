@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## Upcoming
+### Removed
+- Duplicate call for commit changelog
+
 ## v2.0.3 - 2015-03-02
 ### Changed
 - Log errors
