@@ -1,14 +1,14 @@
 {
-  "name": "node-release-tools",
+  "name": "release-tools",
   "version": "1.1.1",
   "description": "A tiny collection of release helpers.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test/**/*.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sdepold/node-release-tools.git"
+    "url": "https://github.com/sdepold/release-tools.git"
   },
   "keywords": [
     "node",
@@ -18,11 +18,22 @@
   "author": "Sascha Depold",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sdepold/node-release-tools/issues"
+    "url": "https://github.com/sdepold/release-tools/issues"
   },
-  "homepage": "https://github.com/sdepold/node-release-tools",
+  "homepage": "https://github.com/sdepold/release-tools",
   "bin": {
-    "npm_bump": "./bin/npm_bump",
-    "npm_release": "./bin/npm_release"
+    "npm_bump": "./bin/npm_bump.js",
+    "npm_release": "./bin/npm_release.js"
+  },
+  "dependencies": {
+    "bluebird": "^2.9.12",
+    "dateformat": "^1.0.11",
+    "require-all": "^1.0.0",
+    "yargs": "^3.3.1"
+  },
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "mocha": "^2.1.0",
+    "sinon": "^1.12.2"
   }
 }

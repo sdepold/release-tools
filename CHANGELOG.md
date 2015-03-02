@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## Upcoming
+### Changed
+- Use quiet mode of git
+
 ## 1.1.0 - 2015-02-25
 ### Changed
 - Add git push to actually add changes to the remote branch
