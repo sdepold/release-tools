@@ -4,8 +4,8 @@
 var yargs        = require('yargs');
 
 // Local modules
-var helper       = require('../lib/helper');
 var releaseTools = require('../lib/index');
+var Support      = require('../lib/support');
 
 var argv = yargs
   .usage('Usage: $0 version')
@@ -13,5 +13,4 @@ var argv = yargs
   .demand(1)
   .argv;
 
-releaseTools.npm.release(helper.parseArgs(argv));
-
+releaseTools.npm.release(Support.misc.parseArgs(argv));
