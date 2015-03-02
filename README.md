@@ -1,8 +1,8 @@
-# node-release-tools
+# release-tools
 A tiny collection of release helpers.
 
 ## Executables
-The lib ships executables which are using the exported functions to bump and release node packages. 
+The lib ships executables which are using the exported functions to bump and release node packages.
 
 ### npm_bump
 Bump the package to a specific version without publishing it.
@@ -28,7 +28,7 @@ npm_release 1.2.3
 This function is called by `npm_bump` and expects an object as first parameter:
 
 ```javascript
-var releaseTools = require('node-release-tools');
+var releaseTools = require('release-tools');
 releaseTools.bump({ version: '1.2.3' });
 ```
 
