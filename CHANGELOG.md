@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## Upcoming
+### Changed
+- Log errors
+
 ## v2.0.2 - 2015-03-02
 ### Added
 - Logging
