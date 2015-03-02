@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## Upcoming
+## v2.0.5 - 2015-03-02
 ### Changed
 - Fix iojs build on travis
 
