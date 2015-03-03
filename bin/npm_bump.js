@@ -15,4 +15,4 @@ var argv = yargs
   .demand(1)
   .argv;
 
-releaseTools.npm.bump(Support.parseArgs(argv));
+releaseTools.npm.bump(Support.misc.parseArgs(argv));

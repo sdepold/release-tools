@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## Upcoming
+### Changed
+- Fix npm_bump. It wasn't able to parse the version
+
 ## v2.0.5 - 2015-03-02
 ### Changed
 - Fix iojs build on travis
