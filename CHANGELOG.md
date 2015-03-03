@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## Upcoming
+## v2.0.7 - 2015-03-03
 ### Changed
 - Make npm_bump and npm_release DRY.
 
