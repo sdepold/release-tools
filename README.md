@@ -1,4 +1,4 @@
-# release-tools
+# release-tools [![Build Status](https://travis-ci.org/sdepold/release-tools.svg?branch=master)](https://travis-ci.org/sdepold/release-tools)
 A tiny collection of release helpers.
 
 ## Executables
