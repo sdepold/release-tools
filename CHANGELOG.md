@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## Upcoming
+### Changed
+- Make npm_bump and npm_release DRY.
+
 ## v2.0.6 - 2015-03-03
 ### Changed
 - Fix npm_bump. It wasn't able to parse the version
