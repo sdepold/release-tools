@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## Upcoming
+## v2.1.0 - 2015-03-04
 ### Added
 - `--bugfix` flag that bumps to the next bugfix version
 - `--minor` flag that bumps to the next minor version
