@@ -1,6 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## Upcoming
+### Added
+- `--bugfix` flag that bumps to the next bugfix version
+- `--minor` flag that bumps to the next minor version
+- `--major` flag that bumps to the next major version
+
 ## v2.0.7 - 2015-03-03
 ### Changed
 - Make npm_bump and npm_release DRY.

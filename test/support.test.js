@@ -32,11 +32,42 @@ describe('Support', function () {
     });
 
     describe('parseArgs', function () {
+      beforeEach(function () {
+        this.stub = sinon.stub(Support.misc, 'getCurrentVersion', function () {
+          return '2.3.4';
+        });
+      });
+
+      afterEach(function () {
+        this.stub.restore();
+      });
+
       it('returns the first arg as version', function () {
         var args   = { _ : ['1.2.3'] };
         var parsed = this.helper.parseArgs(args);
 
         expect(parsed).to.eql({ version: '1.2.3' });
+      });
+
+      it('correctly determines the next bugfix version', function () {
+        var args   = { bugfix : true };
+        var parsed = this.helper.parseArgs(args);
+
+        expect(parsed).to.eql({ version: '2.3.5' });
+      });
+
+      it('correctly determines the next minor version', function () {
+        var args   = { minor : true };
+        var parsed = this.helper.parseArgs(args);
+
+        expect(parsed).to.eql({ version: '2.4.0' });
+      });
+
+      it('correctly determines the next major version', function () {
+        var args   = { major : true };
+        var parsed = this.helper.parseArgs(args);
+
+        expect(parsed).to.eql({ version: '3.0.0' });
       });
     });
 
