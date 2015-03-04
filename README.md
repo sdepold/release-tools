@@ -22,11 +22,14 @@ This executable is doing the following steps:
 
 ```
 npm_bump 1.2.3
+npm_bump --bugfix # bumps from 1.2.3 to 1.2.4
+npm_bump --minor  # bumps from 1.2.3 to 1.3.0
+npm_bump --major  # bumps from 1.2.3 to 2.0.0
 ```
 
 ### npm_release
 
-Thie executable is doing the following steps:
+This executable is doing the following steps:
 
 - Call `npm_bump`. See the above steps.
 - Release the package to npm via `npm publish`.
@@ -35,6 +38,9 @@ Thie executable is doing the following steps:
 
 ```
 npm_release 1.2.3
+npm_release --bugfix # bumps from 1.2.3 to 1.2.4
+npm_release --minor  # bumps from 1.2.3 to 1.3.0
+npm_release --major  # bumps from 1.2.3 to 2.0.0
 ```
 
 ## Exported functions
@@ -44,14 +50,21 @@ This function is called by `npm_bump` and expects an object as first parameter:
 
 ```javascript
 var releaseTools = require('release-tools');
-releaseTools.npm.bump({ version: '1.2.3' });
+
+releaseTools.npm.bump({ version: '1.2.3' }); // Change version to a specific value.
+releaseTools.npm.bump({ bugfix: true });     // Change version to next bugfix version.
+releaseTools.npm.bump({ minor: true });      // change version to next minor release.
+releaseTools.npm.bump({ major: true });      // Change version to next major release.
 ```
 
 ### npm.release
 This function is called by `npm_release` and expects an object as first parameter:
 
 ```javascript
-releaseTools.npm.release({ version: '1.2.3' });
+releaseTools.npm.release({ version: '1.2.3' }); // Change version to a specific value.
+releaseTools.npm.release({ bugfix: true });     // Change version to next bugfix version.
+releaseTools.npm.release({ minor: true });      // change version to next minor release.
+releaseTools.npm.release({ major: true });      // Change version to next major release.
 ```
 
 ## One word about changelogs
