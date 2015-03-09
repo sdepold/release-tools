@@ -115,11 +115,15 @@ describe('Support', function () {
         return this.helper.update({ version: '1.2.3' });
       });
 
-      it('inserts the version number if the needle is in the changelog', function () {
-        fs.writeFileSync('/tmp/CHANGELOG.md', '## Upcoming');
-        this.mock.expects('setVersion').once().withArgs('1.2.3');
-        this.mock.expects('commitVersion').once().withArgs('1.2.3');
-        return this.helper.update({ version: '1.2.3' });
+      Support.changelog.needles.forEach(function(needle) {
+        describe('with the needle "' + needle + '"', function () {
+          it('inserts the version number if the needle is in the changelog', function () {
+            fs.writeFileSync('/tmp/CHANGELOG.md', needle);
+            this.mock.expects('setVersion').once().withArgs('1.2.3');
+            this.mock.expects('commitVersion').once().withArgs('1.2.3');
+            return this.helper.update({ version: '1.2.3' });
+          });
+        });
       });
     });
 
@@ -151,33 +155,41 @@ describe('Support', function () {
         expect(this.helper.needsUpdate()).to.be(false);
       });
 
-      it('returns true if the change log contains the expected needle', function () {
-        fs.writeFileSync('/tmp/CHANGELOG.md', '## Upcoming');
-        expect(this.helper.needsUpdate()).to.be(true);
+      Support.changelog.needles.forEach(function(needle) {
+        describe('with the needle "' + needle + '"', function () {
+          it('returns true if the change log contains the expected needle', function () {
+            fs.writeFileSync('/tmp/CHANGELOG.md', needle);
+            expect(this.helper.needsUpdate()).to.be(true);
+          });
+        });
       });
     });
 
     describe('setVersion', function () {
-      beforeEach(function () {
-        fs.writeFileSync('/tmp/CHANGELOG.md', '## Upcoming');
-      });
+      Support.changelog.needles.forEach(function(needle) {
+        describe('with the needle "' + needle + '"', function () {
+          beforeEach(function () {
+            fs.writeFileSync('/tmp/CHANGELOG.md', needle);
+          });
 
-      it('replaces the needle', function () {
-        expect(this.helper.read()).to.contain('## Upcoming');
-        this.helper.setVersion('1.2.3');
-        expect(this.helper.read()).to.not.contain('## Upcoming');
-      });
+          it('replaces the needle', function () {
+            expect(this.helper.read()).to.contain(needle);
+            this.helper.setVersion('1.2.3');
+            expect(this.helper.read()).to.not.contain(needle);
+          });
 
-      it('sets the version', function () {
-        this.helper.setVersion('1.2.3');
-        expect(this.helper.read()).to.contain('## v1.2.3 - ');
-      });
+          it('sets the version', function () {
+            this.helper.setVersion('1.2.3');
+            expect(this.helper.read()).to.contain('## v1.2.3 - ');
+          });
 
-      it('sets the date', function () {
-        var clock = sinon.useFakeTimers();
-        this.helper.setVersion('1.2.3');
-        expect(this.helper.read()).to.contain(' - 1970-01-01');
-        clock.restore();
+          it('sets the date', function () {
+            var clock = sinon.useFakeTimers();
+            this.helper.setVersion('1.2.3');
+            expect(this.helper.read()).to.contain(' - 1970-01-01');
+            clock.restore();
+          });
+        });
       });
     });
   });
