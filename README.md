@@ -4,6 +4,12 @@ A tiny collection of release helpers that will help you bumping and publishing y
 
 The projects ships a bunch of source code that get's used by very thin CLI wrappers. This way it is possible to actually use the sources independently from the command line, which can be handy if you want to integrate the logic into your own work flow.
 
+## Installation
+
+```
+npm install -g release-tools
+```
+
 ## Executables
 
 Right now this project is very `npm` focussed but could in theory be used with every other dependency management tool as well.
