@@ -1,9 +1,17 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## Upcoming
+### Added
+- Validate the version string
+
+### Changed
+- Use `semver` for the version bumping
+- Ensure that the new version is bigger than the current one
+
 ## v2.2.0 - 2015-03-09
 ### Added
-- Support for the changelog needle `## Unreleased`
+- Support for the changelog needle `Unreleased`
 
 ## v2.1.0 - 2015-03-04
 ### Added
