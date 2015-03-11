@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## v1.1.1 - 2015-03-11
+## Upcoming
 ### Added
 - Validate the version string
 
@@ -11,7 +11,7 @@ All notable changes to this project will be documented in this file.
 
 ## v2.2.0 - 2015-03-09
 ### Added
-- Support for the changelog needle `## v1.1.1 - 2015-03-11`
+- Support for the changelog needle `Unreleased`
 
 ## v2.1.0 - 2015-03-04
 ### Added
