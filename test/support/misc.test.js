@@ -68,6 +68,13 @@ describe('Support', function () {
 
         expect(parsed).to.eql({ version: '3.0.0' });
       });
+
+      it('accepts semver keywords as versions', function () {
+        var args   = { _: ['minor'] };
+        var parsed = this.helper.parseArgs(args);
+
+        expect(parsed).to.eql({ version: '2.4.0' });
+      });
     });
 
     describe('validateVersion', function () {
@@ -79,7 +86,7 @@ describe('Support', function () {
 
       it('throws if the version is no version', function () {
         expect(function () {
-          this.helper.validateVersion({ version: 'nomnom' });
+          this.helper.validateVersion({ version: null, _ : ['nomnom'] });
         }.bind(this)).to.throwError(/Specified version is not valid: nomnom/);
       });
 
