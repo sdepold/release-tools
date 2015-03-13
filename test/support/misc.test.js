@@ -86,7 +86,13 @@ describe('Support', function () {
 
       it('throws if the version is no version', function () {
         expect(function () {
-          this.helper.validateVersion({ version: null, _ : ['nomnom'] });
+          this.helper.validateVersion({ version: 'nomnom' });
+        }.bind(this)).to.throwError(/Specified version is not valid: nomnom/);
+      });
+
+      it('throws if the first CLI argument is no version', function () {
+        expect(function () {
+          this.helper.validateVersion({ _: ['nomnom'] });
         }.bind(this)).to.throwError(/Specified version is not valid: nomnom/);
       });
 
