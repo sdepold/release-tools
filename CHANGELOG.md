@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## Upcoming
+### Added
+- Git tags will now list the changes of the change log
+
 ## v2.4.0 - 2015-03-13
 ### Added
 - Accept semver keywords as versions
