@@ -28,6 +28,7 @@
   "dependencies": {
     "bluebird": "^2.9.12",
     "dateformat": "^1.0.11",
+    "keepachangelog": "git://github.com/contentful-labs/keepachangelog.git",
     "require-all": "^1.0.0",
     "semver": "^4.3.1",
     "yargs": "^3.3.1"
