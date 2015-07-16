@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## Upcoming
+## v2.4.2 - 2015-07-16
 ### Changed
 - Log upcoming version
 - Properly handle --patch
