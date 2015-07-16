@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## v2.4.1 - 2015-07-16
+### Added
+- The flag `patch`
+
 ## v2.4.0 - 2015-03-13
 ### Added
 - Accept semver keywords as versions
