@@ -25,24 +25,24 @@ describe('npm', function () {
 
   describe('bump', function () {
     it('calls the expected steps', function () {
-      this.mocks.changelog.expects('update').once().withArgs({ version: '1.2.3' });
-      this.mocks.npm.expects('updatePackage').once().withArgs({ version: '1.2.3' });
-      this.mocks.git.expects('push').once().withArgs({ version: '1.2.3' });
-      this.mocks.git.expects('pushTags').once().withArgs({ version: '1.2.3' });
+      this.mocks.changelog.expects('update').once().withArgs({ version: '10.2.3' });
+      this.mocks.npm.expects('updatePackage').once().withArgs({ version: '10.2.3' });
+      this.mocks.git.expects('push').once().withArgs({ version: '10.2.3' });
+      this.mocks.git.expects('pushTags').once().withArgs({ version: '10.2.3' });
 
-      return npm.bump({ version: '1.2.3' });
+      return npm.bump({ version: '10.2.3' });
     });
   });
 
   describe('release', function () {
     it('calls everything from bump + releases the package', function () {
-      this.mocks.changelog.expects('update').once().withArgs({ version: '1.2.3' });
-      this.mocks.npm.expects('updatePackage').once().withArgs({ version: '1.2.3' });
-      this.mocks.git.expects('push').once().withArgs({ version: '1.2.3' });
-      this.mocks.git.expects('pushTags').once().withArgs({ version: '1.2.3' });
-      this.mocks.npm.expects('publishPackage').once().withArgs({ version: '1.2.3' });
+      this.mocks.changelog.expects('update').once().withArgs({ version: '10.2.3' });
+      this.mocks.npm.expects('updatePackage').once().withArgs({ version: '10.2.3' });
+      this.mocks.git.expects('push').once().withArgs({ version: '10.2.3' });
+      this.mocks.git.expects('pushTags').once().withArgs({ version: '10.2.3' });
+      this.mocks.npm.expects('publishPackage').once().withArgs({ version: '10.2.3' });
 
-      return npm.release({ version: '1.2.3' });
+      return npm.release({ version: '10.2.3' });
     });
   });
 });
