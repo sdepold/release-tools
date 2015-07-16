@@ -19,6 +19,11 @@ module.exports = {
         alias:    'b',
         describe: 'Bump the package to the next bugfix version.'
       })
+      .option('patch', {
+        demand:   false,
+        alias:    'p',
+        describe: 'Bump the package to the next patch version. This is an alias for --bugfix.'
+      })
       .option('minor', {
         demand:   false,
         alias:    'm',
@@ -42,7 +47,7 @@ module.exports = {
 };
 
 function validOptionCount (argv) {
-  return [argv.bugfix, argv.minor, argv.major].filter(function (arg) {
+  return [argv.bugfix, argv.patch, argv.minor, argv.major].filter(function (arg) {
     return !!arg;
   }).length === 1;
 }

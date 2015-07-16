@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## Upcoming
+### Changed
+- Log upcoming version
+- Properly handle --patch
+
 ## v2.4.1 - 2015-07-16
 ### Added
 - The flag `patch`
