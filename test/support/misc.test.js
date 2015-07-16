@@ -55,6 +55,13 @@ describe('Support', function () {
         expect(parsed).to.eql({ version: '2.3.5' });
       });
 
+      it('correctly treats patch as bugfix', function () {
+        var args   = { patch: true };
+        var parsed = this.helper.parseArgs(args);
+
+        expect(parsed).to.eql({ version: '2.3.5' });
+      });
+
       it('correctly determines the next minor version', function () {
         var args   = { minor: true };
         var parsed = this.helper.parseArgs(args);
