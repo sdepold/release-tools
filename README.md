@@ -49,6 +49,28 @@ npm_release --minor  # bumps from 1.2.3 to 1.3.0
 npm_release --major  # bumps from 1.2.3 to 2.0.0
 ```
 
+### Automatic change type detection
+
+The flag `--auto` will parse the commits since the last git tag and checks the
+subject and the body of the commit messages for some specific markers:
+
+- `[major]` will generate a major version bump
+- `[minor]`, `[feature]` will generate a minor version bump
+- `[patch]`, `[bugfix]`, `[fix]`  will generate a patch version bump
+
+If no change type is detected – because the markers are missing – you can also
+specify a fallback type which is picked up in such cases:
+
+```
+npm_release --auto --auto-fallback minor
+```
+
+This will bump the minor version in case no marker has been found.
+
+#### Example
+
+TBD
+
 ## Exported functions
 
 ### npm.bump

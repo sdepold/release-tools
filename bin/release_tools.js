@@ -1,5 +1,8 @@
 'use strict';
 
+// 3rd-party modules
+var Bluebird = require('bluebird');
+
 // Local modules
 var releaseTools = require('../lib/index');
 var support      = require('../lib/support');
@@ -30,9 +33,20 @@ module.exports = {
         describe: 'Bump the package to the next minor version.'
       })
       .option('major', {
-        deman:    false,
+        demand:   false,
         alias:    'M',
         describe: 'Bump the package to the next major version.'
+      })
+      .option('auto', {
+        demand:   false,
+        alias:    'a',
+        describe: 'Automatically detect which version fragment needs bump.'
+      })
+      .option('auto-fallback', {
+        demand: false,
+        alias: 'f',
+        describe: 'Defines version fragment which is bumped in case of failed auto detection.',
+        choices: ['major', 'minor', 'patch']
       })
       .wrap(150)
       .argv;
@@ -42,12 +56,33 @@ module.exports = {
       process.exit(1);
     }
 
-    releaseTools.npm[functionName](support.misc.parseArgs(argv));
+    var result = Bluebird.resolve(argv);
+
+    if (argv.auto) {
+      result = result.then(autoDetectVersion(argv.autoFallback));
+    }
+
+    return result.then(function (args) {
+      releaseTools.npm[functionName](support.misc.parseArgs(args));
+    });
   }
 };
 
 function validOptionCount (argv) {
-  return [argv.bugfix, argv.patch, argv.minor, argv.major].filter(function (arg) {
+  return [argv.bugfix, argv.patch, argv.minor, argv.major, argv.auto].filter(function (arg) {
     return !!arg;
   }).length === 1;
+}
+
+function autoDetectVersion (fallback) {
+  return function () {
+    return support.git.getCommitsSinceLastVersion().then(function (commits) {
+      var result = {};
+      var changeType = support.git.detectChangeType(commits, fallback);
+
+      result[changeType] = true;
+
+      return result;
+    });
+  }
 }
