@@ -67,7 +67,17 @@ This will bump the minor version in case no marker has been found.
 
 #### Example
 
-TBD
+Let's assume your lib is currently on version 1.0.0 (aka the package.json contains that particular version
+number and a git tag `v1.0.0` exists). You now commit with the following messages:
+
+```
+[feature] Add new functionality
+[patch] Fix readme
+```
+
+If you run `npm_release --auto` now, it will bump the second version fragment aka
+set the version to `1.1.0`. This happens because of the `[feature]` in one of the
+git commit message.
 
 ## Exported functions
 

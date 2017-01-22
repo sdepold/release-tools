@@ -10,3 +10,7 @@ sudo: false
 cache:
   directories:
     - node_modules
+
+before_script:
+  - git config --global user.name "Sascha Depold"
+  - git config --global user.email "sdepold@dev.null"

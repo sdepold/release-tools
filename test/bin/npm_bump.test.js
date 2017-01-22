@@ -12,10 +12,7 @@ var callBump = helper.callBump;
 describe('npm_bump', function () {
   describe('call without args', function () {
     it('renders the help', function () {
-      return callBump().then(function () {
-        // We should not reach this code...
-        expect(1).to.equal(2);
-      }, function (e) {
+      return bumpAndGetVersion().then(fail, function (e) {
         expect(e).to.contain('--bugfix, -b')
       });
     });
@@ -23,7 +20,7 @@ describe('npm_bump', function () {
 
   describe('call with bugfix option', function () {
     it('bumps the third fragment', function () {
-      return bumpAndGetVersion('--bugfix').then(function (version) {
+      return bumpAndGetVersion({ args: '--bugfix' }).then(function (version) {
         expect(version).to.equal('0.0.1');
       });
     });
@@ -31,7 +28,7 @@ describe('npm_bump', function () {
 
   describe('call with minor option', function () {
     it('bumps the second fragment', function () {
-      return bumpAndGetVersion('--minor').then(function (version) {
+      return bumpAndGetVersion({ args: '--minor' }).then(function (version) {
         expect(version).to.equal('0.1.0');
       });
     });
@@ -39,9 +36,53 @@ describe('npm_bump', function () {
 
   describe('call with major option', function () {
     it('bumps the first fragment', function () {
-      return bumpAndGetVersion('--major').then(function (version) {
+      return bumpAndGetVersion({ args: '--major' }).then(function (version) {
         expect(version).to.equal('1.0.0');
       });
     });
   });
+
+  describe('call with auto option', function () {
+    it('parses the entire history when package version is 0.0.0', function () {
+      return bumpAndGetVersion({
+        args: '--auto',
+        commits: [
+          { subject: 'Initial import' },
+          { subject: '[minor] Add first feature' }
+        ]
+      }).then(function (version) {
+        expect(version).to.equal('0.1.0');
+      });
+    });
+
+    it('throws an error if no change type could be found since last tag', function () {
+      return bumpAndGetVersion({
+        args: '--auto',
+        packageVersion: '0.0.1',
+        commits: [
+          { subject: 'Initial import', tag: 'v0.0.1' },
+          { subject: 'Update readme' }
+        ]
+      }).then(fail, function (err) {
+        expect(err.trim()).to.eql('No change type detected and no fallback defined!');
+      });
+    });
+
+    it('falls back to --auto-fallback if no change type was detected', function () {
+      return bumpAndGetVersion({
+        args: '--auto --auto-fallback patch',
+        packageVersion: '0.0.1',
+        commits: [
+          { subject: 'Initial import', tag: 'v0.0.1' },
+          { subject: 'Update readme' }
+        ]
+      }).then(function (version) {
+        expect(version).to.equal('0.0.2');
+      });
+    });
+  });
 });
+
+function fail () {
+  expect(1).to.equal(2);
+}

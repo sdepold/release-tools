@@ -2,6 +2,7 @@
 
 // 3rd-party modules
 var Bluebird = require('bluebird');
+var xtend    = require('xtend');
 
 // Local modules
 var releaseTools = require('../lib/index');
@@ -13,11 +14,18 @@ module.exports = {
     var result = Bluebird.resolve(argv);
 
     if (argv.auto) {
-      result = result.then(autoDetectVersion(argv.autoFallback));
+      result = result
+        .then(autoDetectVersion(argv.autoFallback))
+        .then(function (detectedVersion) {
+          return xtend(argv, detectedVersion);
+        });
     }
 
     return result.then(function (args) {
       releaseTools.npm[functionName](support.misc.parseArgs(args));
+    }).catch(function (e) {
+      console.error((e.message || e).trim());
+      process.exit(1);
     });
   }
 };
@@ -25,12 +33,7 @@ module.exports = {
 function autoDetectVersion (fallback) {
   return function () {
     return support.git.getCommitsSinceLastVersion().then(function (commits) {
-      var result = {};
-      var changeType = support.git.detectChangeType(commits, fallback);
-
-      result[changeType] = true;
-
-      return result;
+      return support.git.detectChangeType(commits, fallback);
     });
   }
 }
