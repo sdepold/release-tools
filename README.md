@@ -21,17 +21,24 @@ This executable is doing the following steps:
 * It checks if your project contains a `CHANGELOG.md` file.
 * If there is a changelog, it will check if the changelog contains the needle `## Upcoming` and replaces it with the new version and the current timestamp.
 * If there is a changelog, it will commit the changes in changelog with the commit message `Add changes in version: v<version>`.
-* It will now update run `npm version` which will set the version of your package.json to the new value, commit the change with the commit message `Bump to version: v<version>` and finally create a tag for the new version á la `v<version>`.
-* It will now push your changes and your tags to the remote server (via git).
+* It will now run `npm version` (which sets the version of your package.json to the new value), commit the change with the commit message `Bump to version: v<version>` and finally create a tag for the new version á la `v<version>`.
+* Finally it pushes your changes and your tags to the remote server (via git).
 
 #### Usage
 
 ```
-npm_bump 1.2.3
-npm_bump --bugfix # bumps from 1.2.3 to 1.2.4
-npm_bump --minor  # bumps from 1.2.3 to 1.3.0
-npm_bump --major  # bumps from 1.2.3 to 2.0.0
+npm_bump 1.2.3 # Usage with a fixed version
+npm_bump --bugfix # Usage with options
 ```
+
+#### Options
+
+- `--bugfix`, `--patch` increases the third fragment of the version string (e.g. 1.2.3 to 1.2.4)
+- `--minor` increases the second fragment of the version string and sets the third fragment to 0 (e.g. 1.2.3 to 1.3.0)
+- `--major` increases the first fragment of the version string and sets the second and third fragment to 0 (e.g. 1.2.3 to 2.0.0)
+- `--skip-push` will disable the pushing to the remote git server
+- `--auto` enables automatic version detection. See below for more information
+- `--auto-fallback` defines the to-be-bumped fragment in case of failing `auto` detection
 
 ### npm_release
 
@@ -39,15 +46,6 @@ This executable is doing the following steps:
 
 - Call `npm_bump`. See the above steps.
 - Release the package to npm via `npm publish`.
-
-#### Usage
-
-```
-npm_release 1.2.3
-npm_release --bugfix # bumps from 1.2.3 to 1.2.4
-npm_release --minor  # bumps from 1.2.3 to 1.3.0
-npm_release --major  # bumps from 1.2.3 to 2.0.0
-```
 
 ### Automatic change type detection
 
