@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## v2.5.0 - 2017-01-24
+### Added
+- The flag `auto` automatically detects which version fragment to bump.
+
 ## v2.4.2 - 2015-07-16
 ### Changed
 - Log upcoming version
