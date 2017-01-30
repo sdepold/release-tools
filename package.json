@@ -1,6 +1,6 @@
 {
   "name": "release-tools",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "A tiny collection of release helpers.",
   "main": "index.js",
   "scripts": {
