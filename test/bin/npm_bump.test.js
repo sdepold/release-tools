@@ -12,8 +12,8 @@ var callBump = helper.callBump;
 describe('npm_bump', function () {
   describe('call without args', function () {
     it('renders the help', function () {
-      return bumpAndGetVersion().then(fail, function (e) {
-        expect(e).to.contain('--bugfix, -b')
+      return bumpAndGetVersion().then(fail, function (err) {
+        expect(err.message).to.contain('--bugfix, -b')
       });
     });
   });
@@ -64,7 +64,7 @@ describe('npm_bump', function () {
           { subject: 'Update readme' }
         ]
       }).then(fail, function (err) {
-        expect(err.trim()).to.eql('No change type detected and no fallback defined!');
+        expect(err.message.trim()).to.contain('No change type detected and no fallback defined!');
       });
     });
 
