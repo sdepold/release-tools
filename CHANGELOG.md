@@ -1,6 +1,14 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## v2.5.2 - 2017-02-01
+### Fixed
+- Fix version detection in parsed logs
+
+## v2.5.1 - 2017-01-30
+### Fixed
+- Don't fail when git hooks are logging to stderr.
+
 ## v2.5.0 - 2017-01-24
 ### Added
 - The flag `auto` automatically detects which version fragment to bump.

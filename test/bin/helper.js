@@ -21,6 +21,7 @@ var helper = module.exports = {
 
   prepare: function (options) {
     var packageVersion = options.packageVersion || '0.0.0';
+    
     return exec('rm -rf ' + testDir).then(function () {
       return exec('mkdir ' + testDir);
     }).then(function () {

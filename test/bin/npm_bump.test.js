@@ -80,6 +80,18 @@ describe('npm_bump', function () {
         expect(version).to.equal('0.0.2');
       });
     });
+
+    it('detects patch level bumps in the body', function () {
+      return bumpAndGetVersion({
+        args: '--auto --auto-fallback minor',
+        commits: [
+          { subject: 'Initial import' },
+          { subject: 'Update readme', body: '[patch] Some more description' }
+        ]
+      }).then(function (version) {
+        expect(version).to.equal('0.0.1');
+      });
+    })
   });
 });
 
