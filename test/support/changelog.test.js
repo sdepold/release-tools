@@ -41,13 +41,17 @@ describe('Support', function () {
 
       it('does not modify the changelog if there is none', function () {
         this.mock.expects('setVersion').never();
-        return this.helper.update({ version: '1.2.3' });
+        return this.helper.update({
+          version: '1.2.3'
+        });
       });
 
       it('does not modify the changelog if there is no needle in the changelog', function () {
         fs.writeFileSync('/tmp/CHANGELOG.md', 'nomnom');
         this.mock.expects('setVersion').never();
-        return this.helper.update({ version: '1.2.3' });
+        return this.helper.update({
+          version: '1.2.3'
+        });
       });
 
       Support.changelog.needles.forEach(function (needle) {
@@ -56,7 +60,9 @@ describe('Support', function () {
             fs.writeFileSync('/tmp/CHANGELOG.md', needle);
             this.mock.expects('setVersion').once().withArgs('1.2.3');
             this.mock.expects('commitVersion').once().withArgs('1.2.3');
-            return this.helper.update({ version: '1.2.3' });
+            return this.helper.update({
+              version: '1.2.3'
+            });
           });
         });
       });
